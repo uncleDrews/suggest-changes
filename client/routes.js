@@ -10,8 +10,8 @@ export default (
         <div className="main-content-wrapper">
             <Switch>
 
-                <Route exact path={'/'} component={() => <div>HUI</div>} />
-                <Route exact path={'/fb'} component={() => <div>PIZDA</div>} />
+                <Route exact path={'/'} component={() => <div>Wololo</div>} />
+                <Route exact path={'/fb'} component={() => <div>Wololo</div>} />
 
             </Switch>
         </div>
