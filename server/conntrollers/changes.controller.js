@@ -23,7 +23,7 @@ async function parsePage(url) {
 }
 
 exports.index = function (req, res) {
-    db.SuggestedChanges.find({}).exec()
+    db.SuggestedChanges.find(req.query || {}).exec()
         .then(responde(res))
         .catch(handleError(res))
 };

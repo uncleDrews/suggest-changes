@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 export default class SingleCard extends Component{
 
@@ -8,6 +9,7 @@ export default class SingleCard extends Component{
             value: props.originalText,
         };
         this.onInputChange = this.onInputChange.bind(this);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
     onInputChange(event){
@@ -15,7 +17,9 @@ export default class SingleCard extends Component{
     }
 
     onFormSubmit(){
-
+        alert('A name was submitted: ' + this.state.value);
+        this.props.suggestChange(this.state.value, this.props.originalText);
+        event.preventDefault();
     };
 
     render(){
@@ -28,17 +32,23 @@ export default class SingleCard extends Component{
                     </p>
                 </div>
                 <div>
-                    <form>
-                        <textarea value={this.state.value}  cols="30" rows="10"></textarea>
+                    <form onSubmit={this.onFormSubmit}>
+                        <textarea
+                            value={this.state.value}
+                            onChange={this.onInputChange}
+                            cols="30"
+                            rows="10"/>
                         <button>
                             Suggest
                         </button>
                     </form>
                 </div>
-
             </div>
         );
     }
-
-
 }
+
+SingleCard.propTypes = {
+    originalText: PropTypes.string,
+    suggestChange: PropTypes.func
+};

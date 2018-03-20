@@ -14,4 +14,3 @@ export const put = (url, body) => axios.put(`${baseApiUrl}/${url}`, body)
 export const del = url => axios.delete(`${baseApiUrl}/${url}`)
     .then(res => res.data);
 
-
