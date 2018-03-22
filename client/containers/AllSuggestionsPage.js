@@ -27,7 +27,6 @@ class AllSuggestionsPage extends Component{
 
 
     renderArticlesAndChanges(){
-        console.log(this.props.collect);
         if(this.props.collect.length) {
             return this.props.collect.map( (article, index) => {
                 return (

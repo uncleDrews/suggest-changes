@@ -50,7 +50,6 @@ exports.delete = function (req, res) {
     const suggestions = (req.query.suggestionsArray || '')
         .split(',')
         .map((idString) => mongoose.mongo.ObjectId(idString));
-    console.log(suggestions);
     db.SuggestedChanges.remove({'_id':{'$in':suggestions}}).exec()
         .then((data) => res.json({
             removed: suggestions,
