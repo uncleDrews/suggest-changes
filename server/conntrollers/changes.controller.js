@@ -11,6 +11,9 @@ function responde(res) {
 }
 
 async function parsePage(url) {
+
+    //could be done with itemprops, but no need in this approach
+    //so we will use regular expression
     const data = await request.get(url);
     const paragraphs = [];
     data.replace(/<p>(.*?)<\/p>/g, function (p) {

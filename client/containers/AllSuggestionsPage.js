@@ -13,25 +13,21 @@ class AllSuggestionsPage extends Component{
         this.state = {
             showApproved : false,
         };
-        this.checkQuerystring = this.checkQuerystring.bind(this);
+        this.fetchSuggestions = this.fetchSuggestions.bind(this);
     }
 
-    checkQuerystring(){
-        const showApproved = queryString.parse(this.props.location.search).showApproved;
-        console.log('show approed', showApproved);
-        console.log(typeof showApproved);
-        if (showApproved && showApproved === 'true') {
-            this.setState({showApproved : true});
-        }
-        console.log(this.state);
+    fetchSuggestions(){
+        const showApproved = queryString.parse(this.props.location.search).showApproved === 'true';
+        this.setState({showApproved}, () => this.props.getAllSuggestions(this.state.showApproved));
     }
 
     componentDidMount(){
-        this.checkQuerystring();
-        this.props.getAllSuggestions(this.state.showApproved);
+        this.fetchSuggestions();
     }
 
+
     renderArticlesAndChanges(){
+        console.log(this.props.collect);
         if(this.props.collect.length) {
             return this.props.collect.map( (article, index) => {
                 return (

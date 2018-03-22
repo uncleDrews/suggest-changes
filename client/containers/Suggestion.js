@@ -9,11 +9,11 @@ function Suggestion(props) {
     return (
         <div className='single-suggestion'>
             <p>{props.suggestion.usersText}</p>
-            <button
+            {!props.suggestion.isApproved && <button
                 onClick={()=>(props.approveSuggestion(props.suggestion))}
                 className='btn btn-primary'>
                 Approve
-            </button>
+            </button>}
         </div>
     );
 }

@@ -12,7 +12,6 @@ const SuggestedChange = new Schema({
     usersText: {
         type: String
     },
-    // id: { type: Date, default: Date.now },
     isApproved: {
         type: Boolean,
         default: false

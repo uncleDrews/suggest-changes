@@ -30,12 +30,10 @@ class Paragraph extends Component{
             <h4>Users suggestions</h4>
             {(this.props.paragraph.suggestedChanges).map(
                 (suggestion, index) => {
-                    if (suggestion.isApproved === false) {
                         return (<Suggestion
                                 key={index}
                                 suggestion={suggestion}/>
                         )
-                    }
                 }
             )}
         </div>
