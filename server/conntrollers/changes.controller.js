@@ -44,9 +44,16 @@ exports.update = function (req, res) {
 };
 
 exports.delete = function (req, res) {
-    const id = mongoose.mongo.ObjectId(req.params.id);
-    db.SuggestedChanges.find({_id: id}).remove().exec()
-        .then(responde(res))
+    const suggestions = (req.query.suggestionsArray || '')
+        .split(',')
+        .map((idString) => mongoose.mongo.ObjectId(idString));
+    console.log(suggestions);
+    db.SuggestedChanges.remove({'_id':{'$in':suggestions}}).exec()
+        .then((data) => res.json({
+            removed: suggestions,
+            status: data,
+
+        }))
         .catch(handleError(res))
 };
 
