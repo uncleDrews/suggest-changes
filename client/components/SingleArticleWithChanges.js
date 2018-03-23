@@ -1,15 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Paragraph from '../containers/Paragraph';
 
-export default class SingleArticleWithChanges extends Component {
+  const SingleArticleWithChanges = (props)=> {
 
-    constructor(props) {
-        super(props);
-    }
 
-    renderParagraphs() {
-        if (this.props.paragraphs.length) {
-            return this.props.paragraphs.map(
+    const renderParagraphs = ()=> {
+        if (props.paragraphs.length) {
+            return props.paragraphs.map(
                 (paragraph, index) => {
                     return (
                         <Paragraph
@@ -20,20 +17,19 @@ export default class SingleArticleWithChanges extends Component {
                 }
             );
         }
-    }
+    };
 
-    render() {
         return (
             <div className='article-wrapper'>
                 <div className='header'>
-                    <strong>Article URL: </strong> {this.props.articleUrl}
+                    <strong>Article URL: </strong> {props.articleUrl}
                 </div>
                 <div className='inner'>
-                    {this.renderParagraphs()}
+                    {renderParagraphs()}
                 </div>
             </div>
         )
-    }
-}
+};
 
 
+export default SingleArticleWithChanges;
