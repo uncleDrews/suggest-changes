@@ -55,9 +55,3 @@ export default class SingleCard extends Component {
         );
     }
 }
-
-SingleCard.propTypes = {
-    originalText: PropTypes.string,
-    suggestChange: PropTypes.func,
-    url: PropTypes.string
-};

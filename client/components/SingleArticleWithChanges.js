@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import Paragraph from '../containers/Paragraph';
 
 export default class SingleArticleWithChanges extends Component {
@@ -37,9 +36,4 @@ export default class SingleArticleWithChanges extends Component {
     }
 }
 
-
-SingleArticleWithChanges.propTypes = {
-    articleUrl: PropTypes.string,
-    textAndSuggestions: PropTypes.array,
-};
 

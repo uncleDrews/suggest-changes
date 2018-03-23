@@ -5,6 +5,7 @@ import {getParsedArticle} from "../actions/index";
 import SingleCard from "../components/SingleCard";
 import {suggestChange} from "../actions";
 import Link from "react-router-dom/es/Link";
+import ArticleNotFound from '../components/ArticleNotFound';
 
 const queryString = require('query-string');
 
@@ -30,10 +31,7 @@ class ArticlePage extends Component {
                     url={queryString.parse(this.props.location.search).articleURL}/>
             );
         } else return (
-            <div className='nothing-found'>
-                <h1>There is no such article, try pass the right link with query params</h1>
-                <img src="https://media.giphy.com/media/hEc4k5pN17GZq/giphy.gif" alt=""/>
-            </div>
+            <ArticleNotFound/>
         )
 
     }
@@ -72,6 +70,5 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps({article}) {
     return {article};
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticlePage);

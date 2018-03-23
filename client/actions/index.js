@@ -14,6 +14,7 @@ export function getParsedArticle(url) {
         payload: request
     }
 }
+
 export function suggestChange(url, originalText, suggestedText) {
     const body = {
         articleUrl: url,
@@ -26,6 +27,7 @@ export function suggestChange(url, originalText, suggestedText) {
         payload: request
     }
 }
+
 export function approveSuggestion(suggestion) {
     suggestion.isApproved = true;
     let request = put(`suggest-change/${suggestion._id}`, suggestion);
@@ -35,7 +37,7 @@ export function approveSuggestion(suggestion) {
     }
 }
 
-export function getAllSuggestions(showApproved){
+export function getAllSuggestions(showApproved) {
     const request = get(`suggest-change?isApproved=${showApproved}`);
     return {
         type: SUGGESTED_CHANGES_FETCHED,
@@ -43,9 +45,9 @@ export function getAllSuggestions(showApproved){
     }
 }
 
-export function deleteSuggestions(changes){
+export function deleteSuggestions(changes) {
 
-    const request = del(`suggest-change?suggestionsArray=${changes.map(change=>change._id).join(',')}`);
+    const request = del(`suggest-change?suggestionsArray=${changes.map(change => change._id).join(',')}`);
     return {
         type: DELETE_SUGGESTIONS,
         payload: request

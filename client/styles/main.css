@@ -58,7 +58,7 @@
 
 .nothing-found{
     display: flex;
-    height: 50vh;
+    height: 70vh;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;

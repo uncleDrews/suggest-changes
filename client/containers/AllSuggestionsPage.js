@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import SingleArticleWithChanges from '../components/SingleArticleWithChanges';
 import * as _ from 'lodash';
 import {getAllSuggestions} from "../actions";
+import SuggestionsNotFound from "../components/SuggestionsNotFound";
 const queryString = require('query-string');
 
 
@@ -13,13 +14,12 @@ class AllSuggestionsPage extends Component{
         this.state = {
             showApproved : false,
         };
-        this.fetchSuggestions = this.fetchSuggestions.bind(this);
     }
 
     fetchSuggestions(){
         const showApproved = queryString.parse(this.props.location.search).showApproved === 'true';
         this.setState({showApproved}, () => this.props.getAllSuggestions(this.state.showApproved));
-    }
+    } ;
 
     componentDidMount(){
         this.fetchSuggestions();
@@ -40,19 +40,13 @@ class AllSuggestionsPage extends Component{
             )
         } else {
             return (
-                <div className='nothing-found'>
-                    <h1>
-                        There are no suggestions available
-                    </h1>
-                    <img src="https://media.giphy.com/media/CJN2cdXD51Q2c/giphy.gif" alt=""/>
-                </div>
+               <SuggestionsNotFound/>
             )
         }
     }
 
     render(){
         return(
-
            <div>
                {this.renderArticlesAndChanges()}
            </div>
